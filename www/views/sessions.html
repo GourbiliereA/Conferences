@@ -1,0 +1,57 @@
+ <nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Sessions</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="#!/">Accueil</a></li>
+        <li><a href="#!/agenda">Mon Agenda</a></li>
+        <li class="active"><a href="#!/sessions">Sessions</a></li>
+        <li><a href="#!/speakers">Présentateurs</a></li>
+        <li><a href="#!/about">A propos</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="center">
+  <a href="#!/agenda">
+    <h4>Consulter mon agenda pour voir quelles conférences j'ai enregistré</h4>
+  </a>
+</div>
+
+<div id="divSessionsList" class="list-group">
+  <div class="list-group-item list-group-item-action" ng-repeat="s in sessions | orderBy: 'hours.startHourDate'">
+    <a href="#!/sessions/{{s.id}}">
+      <h4 class="center">{{s.title}}</h4>
+      <div>
+        <b>Horaires</b> : {{s.hours.startHourString}} - {{s.hours.endHourString}}
+      </div>
+      <div>
+        <b>Langue</b> : {{s.lang}}
+      </div>
+      <div>
+        <b>Lieu</b> : {{s.confRoom}}
+      </div>
+      <div>
+        <b>Type</b> : {{s.type}}
+      </div>
+    </a>
+      <div class="participer">
+        <b>Participer</b>
+        <div class="material-switch pull-right">
+            <input id="checkboxParticiper_{{s.id}}" class="checkboxParticiper" ng-click="changeSessionRegistration(s.id, s.hour, s.registered)" type="checkbox" ng-model="s.registered" />
+            <label for="checkboxParticiper_{{s.id}}" class="label-primary"></label>
+        </div>
+      </div>
+      <div id="errorMessage_{{s.id}}" class="errorMessage">
+      </div>
+  </div>
+</div>

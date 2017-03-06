@@ -1,0 +1,30 @@
+ <nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Présentateurs</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="#!/">Accueil</a></li>
+        <li><a href="#!/agenda">Mon Agenda</a></li>
+        <li><a href="#!/sessions">Sessions</a></li>
+        <li class="active"><a href="#!/speakers">Présentateurs</a></li>
+        <li><a href="#!/about">A propos</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="list-group divSpeakerList" ng-repeat="sp in speakers">
+  <a href="#!/speakers/{{sp.id}}">
+    <img src="data/images/{{sp.image}}" alt="{{sp.firstname}} {{sp.lastname}}" class="img-circle" style="max-width: 95%;"> 
+  </a>
+  <h4>{{sp.firstname}}</h4>
+  <h4 class="upperCase">{{sp.lastname}}</h4>
+</div>

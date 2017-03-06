@@ -1,0 +1,100 @@
+ <nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">{{speaker.firstname}} {{speaker.lastname}}</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="#!/">Accueil</a></li>
+        <li><a href="#!/agenda">Mon Agenda</a></li>
+        <li><a href="#!/sessions">Sessions</a></li>
+        <li class="active"><a href="#!/speakers">Présentateurs</a></li>
+        <li><a href="#!/about">A propos</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div> 
+  <h3 align="center">{{session.title}}</h3>
+
+  <div id="divCommentHeader">
+    <div id="divAddMultimedia">
+      <span id="spanCamera" class="glyphicon glyphicon-camera" ng-click="takePicture()"></span>
+      <span id="spanPicture" class="glyphicon glyphicon-picture" ng-click="importPicture()"></span>
+      <span id="spanAudio" class="glyphicon glyphicon-music" ng-click="recordAudio()"></span>
+      <span id="spanVideo" class="glyphicon glyphicon-facetime-video" ng-click="recordVideo()"></span>
+    </div>
+
+    <div id="divBtnSaveNotes">
+        <button id="btnSaveNotes" type="button" class="btn btn-info btn-lg btn3d" ng-click="saveNotes(sesson.id)" disabled="true"><span class="glyphicon glyphicon-floppy-disk"></span> Enregistrer</button>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="comment">Comment:</label>
+    <span id="labelSaved" class="label label-success">Saved</span>
+    <textarea class="form-control" rows="5" id="comment" ng-change="updateLabelSaved()" ng-model="textareaComment"></textarea>
+  </div>
+
+  <div class="accordeonContainer">
+    <h4 id="titleDisplayPictures" class="accordeonTitle" ng-click="updatePicturesDisplay()">Images</h4>
+    <span id="chevronDisplayPictures" ng-model="picturesAccordeonChevron" class="{{picturesAccordeonChevron.class}}" ng-click="updatePicturesDisplay()"></span>
+    <div ng-model="picturesAccordeon" class="divAccordeon" style="{{picturesAccordeon.style}}" >
+      <div id="divPicture">
+        <img id="currentPicture" ng-model="currentPicture" ng-click="showPicturesActionSheet()" ng-src="{{currentPicture.src}}" />
+      </div>
+      
+      <div id="divPicturesThumbnails">
+        <img ng-repeat="p in pictures" class="imageThumbnail" ng-click="changeCurrentPicture(p.pictureId, p.picture)" src="data:image/png;base64,{{p.picture}}" />
+      </div>
+    </div>
+  </div>
+
+  <div class="accordeonContainer">
+    <h4 ng-click="updateAudiosDisplay()" class="accordeonTitle">Audios</h4>
+    <span ng-model="audiosAccordeonChevron" ng-click="updateAudiosDisplay()" class="{{audiosAccordeonChevron.class}}"></span>   
+    <div  id="divAudiosAccordeon" ng-model="audiosAccordeon" class="divAccordeon" class="embed-responsive embed-responsive-4by3" style="{{audiosAccordeon.style}}">
+      <div ng-repeat="a in audios" class="divAudio">
+        <div class="divAudioFilename">
+          {{a.filename}}
+        </div>
+        <div class="divAudioActions">
+          <button ng-click="playAudio(a.audioWithSpaces)" class="btn btn-info btnAudioAction btnAudioPlay">
+            <span class="glyphicon glyphicon-play"></span>
+          </button>
+          <button ng-click="showAudiosActionSheet(a.audioId, a.audioWithSpaces)" class="btn btn-info btnAudioAction btnAudioPlus">
+            <span class="glyphicon glyphicon-plus"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordeonContainer">
+    <h4 ng-click="updateVideosDisplay()" class="accordeonTitle">Vidéos</h4>
+    <span ng-click="updateVideosDisplay()" class="{{videosAccordeonChevron.class}}"></span>
+    <div ng-model="videosAccordeon" class="divAccordeon" style="{{videosAccordeon.style}}" >
+      <div id="divVideosActions">
+          <button ng-click="showVideosActionSheet()" class="btn btn-info">
+            <span class="glyphicon glyphicon-plus"></span>
+          </button>
+      </div>
+      <div id="divVideosNotes">
+        <div  id="divVideo" class="embed-responsive embed-responsive-4by3">
+          <video ng-model="currentVideo" controls>
+            <source src="{{currentVideo.src}}" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      
+      <div id="divVideosThumbnails">
+        <img class="videoThumbnail" ng-repeat="thumbnail in videosThumbnails" src="data:image/png;base64,{{thumbnail.imageData}}" ng-click="changeCurrentVideo(thumbnail.videoId, thumbnail.videoSrc)" />
+      </div>
+    </div>
+  </div>

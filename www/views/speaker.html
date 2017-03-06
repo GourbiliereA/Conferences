@@ -1,0 +1,43 @@
+ <nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">{{speaker.firstname}} {{speaker.lastname}}</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="#!/">Accueil</a></li>
+        <li><a href="#!/agenda">Mon Agenda</a></li>
+        <li><a href="#!/sessions">Sessions</a></li>
+        <li class="active"><a href="#!/speakers">Présentateurs</a></li>
+        <li><a href="#!/about">A propos</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<h2 align="center">{{speaker.firstname}} <span class="upperCase">{{speaker.lastname}}</span></h2>
+
+<div id="divAddContact">
+  Ajouter aux contacts
+  <div class="material-switch pull-right">
+      <input id="contactAdd" ng-model="speaker.inContacts" ng-change="addOrDeleteContact()" type="checkbox"/>
+      <label for="contactAdd" class="label-primary"></label>
+  </div>
+</div>
+
+<img src="data/images/{{speaker.image}}" class="imgSpeakerProfile">
+
+<div ng-repeat="social in speaker.socials">
+    <img src="{{social.icon}}" class="socialLinkIcon" /> <a class="webLink" href="{{social.link}}">{{social.link}}</a>
+</div>
+
+<h3>Conférences :</h3>
+<div ng-repeat="s in sessions">
+  <h4>- {{s.title}}</h4>
+</div>

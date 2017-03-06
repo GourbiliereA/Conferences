@@ -1,0 +1,42 @@
+ <nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Session</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="#!/">Accueil</a></li>
+        <li><a href="#!/agenda">Mon Agenda</a></li>
+        <li class="active"><a href="#!/sessions">Sessions</a></li>
+        <li><a href="#!/speakers">Présentateurs</a></li>
+        <li><a href="#!/about">A propos</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<h3 align="center" class="sessionTitle">{{session.title}}</h3>
+
+<div class="accordeonContainer">
+  <h4 id="titleDisplayDescription" ng-click="updateDescriptionDisplay()" class="accordeonTitle">Description de la Session</h4>
+  <span id="chevronDisplayDescription" ng-click="updateDescriptionDisplay()" class="{{descriptionAccordeonChevron.class}}"></span>
+  <p id="sessionDescription" style="{{descriptionAccordeon.style}}" class="sessionDescription">{{session.desc}}</p>
+</div>
+
+<h4 class="sessionPresentateurs">Présentateurs</h4>
+<div class="list-group" ng-repeat="sp in speakers">
+  <img src="data/images/{{sp.image}}" class="imgSpeakerSession" />
+  <b>{{sp.firstname}} <span class="upperCase">{{sp.lastname}}</span></b>
+</div>
+
+<div id="divBtnNotes">
+  <a href="#!/sessions/{{session.id}}/notes">
+    <button type="button" class="btn btn-info btn-lg btn3d"><span id="myNotesIcon" class="glyphicon glyphicon-list-alt"></span> Voir les Notes</button>
+  </a>
+</div>

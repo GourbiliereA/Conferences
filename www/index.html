@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app = "conferenceApp">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="styles/index.css">
+
+        <!-- Bootstrap -->
+        <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+        <title>Conférences</title>
+    </head>
+    <body>
+        <div ng-view class="appContainer" class="appContainer">
+                  
+        </div>
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="lib/jquery/jquery-3.1.1.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+
+        <!-- Angular -->
+        <script src="lib/angular/angular.min.js"></script>
+        <script src="lib/angular/angular-route.min.js"></script>
+        <script src="scripts/app.js"></script>
+        <!-- Routes -->
+        <script src="scripts/routes.js"></script>
+        <!-- Services -->
+        <script src="scripts/services/data.js"></script>
+        <script src="scripts/services/sessions.js"></script>
+        <script src="scripts/services/speakers.js"></script>
+        <script src="scripts/services/notes.js"></script>
+        <script src="scripts/services/agenda.js"></script>
+        <!-- Controllers -->
+        <script src="scripts/controllers/home.js"></script>
+        <script src="scripts/controllers/sessions.js"></script>
+        <script src="scripts/controllers/session.js"></script>
+        <script src="scripts/controllers/speakers.js"></script>
+        <script src="scripts/controllers/speaker.js"></script>
+        <script src="scripts/controllers/about.js"></script>
+        <script src="scripts/controllers/notes.js"></script>
+        <script src="scripts/controllers/agenda.js"></script>
+
+        <script src="lib/ngcordova/dist/ng-cordova.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+    </body>
+</html>
